@@ -35,7 +35,7 @@ import bduLogo from "../assets/bduLogo.jpg";
 import courseraLogo from "../assets/courseraLogo.png";
 import alyahLogo from "../assets/alyahLogo.jpeg";
 import prodigyLogo from "../assets/prodgyLogo.jpeg";
-
+import tannLogo from "../assets/tann.avif"
 const ResumeSection = () => {
   const [activeTab, setActiveTab] = useState("education");
   const [expandedItems, setExpandedItems] = useState([]);
@@ -87,6 +87,15 @@ const ResumeSection = () => {
   const experienceData = [
     {
       id: 1,
+      duration: "Currently",
+      company: "The Tann Mann Foundation",
+      logo: tannLogo,
+      title: "Flutter Developer",
+      description:
+        "Working remotely as a Flutter developer, contributing to the development, and deployment of mobile application. Focused on creating seamless, user-friendly experiences by implementing responsive interfaces and efficient functionality. Involved in collaborating with cross-functional teams, troubleshooting issues, and continuously improving app performance to meet user needs and business goals.",
+    },
+    {
+      id: 2,
       duration: "3 months",
       company: "Alyah Software Development PLC",
       logo: alyahLogo,

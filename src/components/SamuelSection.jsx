@@ -19,10 +19,7 @@ import {
   SiExpress,
   SiGraphql
 } from "react-icons/si";
-
-// For a real project, you would place your PDF in the public folder (e.g., public/SamuelTiruneh_Resume.pdf)
-// and link to it directly as "/SamuelTiruneh_Resume.pdf" in the href attribute.
-// import MyLatestCV from "../assets/SamuelTiruneh_Resume.pdf";
+ import MyLatestCV from "../assets/SamuelTiruneh_Resume.pdf";
 
 const SamuelSection = () => {
   const techItems = [
@@ -141,14 +138,14 @@ const SamuelSection = () => {
           </div>
 
           {/* Main Title */}
-          <h1 className="text-4xl md:text-7xl font-bold text-gray-900 mb-6 leading-tight animate-fade-in-up animation-delay-200 transition-colors duration-500 dark:text-white">
-            <div className="inline-flex mr-4 animate-code-bounce">
+          <h1 className="text-3xl md:text-7xl font-bold text-gray-900 mb-4 md:mb-6 leading-tight animate-fade-in-up animation-delay-200 transition-colors duration-500 dark:text-white">
+            <div className="inline-flex mr-2 md:mr-4 animate-code-bounce">
               <FaCode
                 className="text-orange-400 transition-colors duration-500 dark:text-amber-400"
-                size={35}
+                size={24}
               />
             </div>
-            <span className="bg-gradient-to-r from-purple-600 to-cyan-600 bg-clip-text text-transparent whitespace-nowrap transition-all duration-500 dark:from-white dark:via-purple-400 dark:to-cyan-400">
+            <span className="bg-gradient-to-r from-purple-600 to-cyan-600 bg-clip-text text-transparent whitespace-normal md:whitespace-nowrap transition-all duration-500 dark:from-white dark:via-purple-400 dark:to-cyan-400">
               Full-Stack Developer
             </span>
           </h1>
@@ -159,7 +156,7 @@ const SamuelSection = () => {
           </p>
 
           {/* Call to Action Buttons */}
-          <div className="flex flex-row gap-4 mb-12 animate-fade-in-up animation-delay-600">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 mb-8 sm:mb-12 animate-fade-in-up animation-delay-600 w-full px-4 sm:px-0">
             <button
               onClick={() => {
                 const projectsSection = document.getElementById("projects");
@@ -167,28 +164,28 @@ const SamuelSection = () => {
                   projectsSection.scrollIntoView({ behavior: "smooth" });
                 }
               }}
-              className="group bg-gradient-to-r from-purple-600 to-cyan-600 hover:from-purple-700 hover:to-cyan-700 text-white font-semibold px-8 py-4 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl dark:from-purple-500 dark:to-cyan-500 dark:hover:from-purple-600 dark:hover:to-cyan-600 dark:shadow-gray-950/50 flex items-center justify-center"
+              className="group bg-gradient-to-r from-purple-600 to-cyan-600 hover:from-purple-700 hover:to-cyan-700 text-white font-semibold px-6 py-3 sm:px-8 sm:py-4 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl dark:from-purple-500 dark:to-cyan-500 dark:hover:from-purple-600 dark:hover:to-cyan-600 dark:shadow-gray-950/50 flex items-center justify-center text-sm sm:text-base"
             >
-              <FaStar className="mr-2 group-hover:animate-spin" size={20} />
+              <FaStar className="mr-2 group-hover:animate-spin" size={16} />
               Showcase
               <FaArrowRight
                 className="ml-2 group-hover:translate-x-1 transition-transform"
-                size={20}
+                size={16}
               />
             </button>
 
-            <button
-              // Removed href and download attributes as MyLatestCV import is not supported
-              className="group border border-gray-300 text-gray-700 hover:bg-gray-50 font-semibold px-8 py-4 rounded-full transition-all duration-300 transform hover:scale-105 shadow-sm hover:shadow-md backdrop-blur-sm flex items-center justify-center cursor-pointer dark:border-gray-700 dark:text-gray-200 dark:hover:bg-gray-800 dark:hover:border-gray-600 dark:shadow-gray-950/50"
+            <a
+              href={MyLatestCV}
+              download="SamuelTiruneh_Resume.pdf"
+              className="group border border-gray-300 text-gray-700 hover:bg-gray-50 font-semibold px-6 py-3 sm:px-8 sm:py-4 rounded-full transition-all duration-300 transform hover:scale-105 shadow-sm hover:shadow-md backdrop-blur-sm flex items-center justify-center cursor-pointer dark:border-gray-700 dark:text-gray-200 dark:hover:bg-gray-800 dark:hover:border-gray-600 dark:shadow-gray-950/50 text-sm sm:text-base"
             >
               <FaDownload
                 className="mr-2 group-hover:animate-bounce"
-                size={20}
+                size={16}
               />
               Resume
-            </button>
+            </a>
           </div>
-
           {/* Tech Stack Carousel */}
           <div className="w-full max-w-6xl mx-auto overflow-hidden animate-fade-in-up animation-delay-1000">
             <h3 className="text-gray-700 text-base md:text-lg font-semibold mb-4 md:mb-6 flex items-center justify-center transition-colors duration-500 dark:text-gray-100">
