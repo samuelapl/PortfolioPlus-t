@@ -12,9 +12,8 @@ const ChatModal = () => {
   })
 
   const [isSubmitting, setIsSubmitting] = useState(false)
-  // In a real Next.js project, you would configure environment variables
-  // in next.config.js or use .env files. For this preview, we'll use a placeholder.
-  const API_BASE = "https://api.example.com" // Placeholder API URL
+ 
+  const API_BASE = "https://portfolio-dashboard-mve4.onrender.com" 
 
   const toggleModal = () => {
     setIsOpen(!isOpen)
@@ -50,26 +49,20 @@ const ChatModal = () => {
     setIsSubmitting(true)
 
     try {
-      // Mock API call for demonstration since external API calls are not supported in v0 preview
-      await new Promise(resolve => setTimeout(resolve, 1500)); // Simulate network delay
-      console.log("Form Data Submitted:", formData);
-      alert("Message sent successfully!");
-      setFormData({ name: "", email: "", message: "" });
-      toggleModal();
-      // In a real app, you would use:
-      // const res = await fetch(`${API_BASE}/api/messages`, {
-      //   method: "POST",
-      //   headers: { "Content-Type": "application/json" },
-      //   body: JSON.stringify(formData),
-      // })
+ 
+      const res = await fetch(`${API_BASE}/api/messages`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      })
 
-      // if (res.ok) {
-      //   alert("Message sent successfully!")
-      //   setFormData({ name: "", email: "", message: "" })
-      //   toggleModal()
-      // } else {
-      //   alert("Failed to send message.")
-      // }
+      if (res.ok) {
+        alert("Message sent successfully!")
+        setFormData({ name: "", email: "", message: "" })
+        toggleModal()
+      } else {
+        alert("Failed to send message.")
+      }
     } catch (err) {
       alert("An error occurred. Please try again.")
       console.error(err)

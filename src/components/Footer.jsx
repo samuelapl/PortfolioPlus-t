@@ -104,8 +104,7 @@ const Footer = () => {
                   contact me with the above social media links.
                 </p>
 
-                {/* Name */}
-                <h3 className="text-2xl font-bold text-gray-900 dark:text-white">Samuel Tiruneh</h3>
+               
               </div>
             </div>
 
