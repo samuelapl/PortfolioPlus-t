@@ -31,6 +31,8 @@ import courseraLogo from "../assets/courseraLogo.png";
 import alyahLogo from "../assets/alyahLogo.jpeg";
 import prodigyLogo from "../assets/prodgyLogo.jpeg";
 import tannLogo from "../assets/tann.avif"
+import codeAlphaLogo from "../assets/codeAlphaLogo.png"
+import SaiketLogo from "../assets/saiket_systems_logo.jpeg"
 const ResumeSection = () => {
   const [activeTab, setActiveTab] = useState("experience");
   const [expandedItems, setExpandedItems] = useState([]);
@@ -111,7 +113,7 @@ const ResumeSection = () => {
       id: 3,
       duration: "1 month", 
       company: "Code Alpha",
-      logo: null, 
+      logo: codeAlphaLogo, 
       title: "Mobile App Developer Intern",
       description:
         "Focusing on building simple to intermediate-level applications. Gained hands-on experience in application development applying fundamental skills to real-world projects to enhance technical skills.",
@@ -120,7 +122,7 @@ const ResumeSection = () => {
       id: 4,
       duration: "1 month", 
       company: "Saiket Systems",
-      logo: null, 
+      logo: SaiketLogo, 
       title: "Web Developer Intern",
       description:
         "Worked on a variety of remote projects,  Focused on skill growth by tackling projects that involved creating responsive user interfaces and implementing core functionalities, which helped to solidify my understanding of modern development practices.",
