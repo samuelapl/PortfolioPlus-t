@@ -1,16 +1,11 @@
 "use client";
 import { useState } from "react";
 import {
-  FaDownload,
   FaGraduationCap,
   FaBriefcase,
   FaCog,
-  FaChevronDown,
-  FaChevronUp,
 } from "react-icons/fa";
 import {
-  FaHtml5,
-  FaCss3Alt,
   FaJs,
   FaReact,
   FaNodeJs,
@@ -37,7 +32,7 @@ import alyahLogo from "../assets/alyahLogo.jpeg";
 import prodigyLogo from "../assets/prodgyLogo.jpeg";
 import tannLogo from "../assets/tann.avif"
 const ResumeSection = () => {
-  const [activeTab, setActiveTab] = useState("education");
+  const [activeTab, setActiveTab] = useState("experience");
   const [expandedItems, setExpandedItems] = useState([]);
   const [showAllSkills, setShowAllSkills] = useState(false);
 
@@ -112,6 +107,24 @@ const ResumeSection = () => {
       description:
         "Built multiple full-stack applications using MongoDB, Express.js, React, and Node.js, implementing features like user authentication, RESTful APIs, and responsive UIs.",
     },
+    {
+      id: 3,
+      duration: "1 month", 
+      company: "Code Alpha",
+      logo: null, 
+      title: "Mobile App Developer Intern",
+      description:
+        "Focusing on building simple to intermediate-level applications. Gained hands-on experience in application development applying fundamental skills to real-world projects to enhance technical skills.",
+    },
+    {
+      id: 4,
+      duration: "1 month", 
+      company: "Saiket Systems",
+      logo: null, 
+      title: "Web Developer Intern",
+      description:
+        "Worked on a variety of remote projects,  Focused on skill growth by tackling projects that involved creating responsive user interfaces and implementing core functionalities, which helped to solidify my understanding of modern development practices.",
+    },
   ];
 
   // Core skills (always visible)
@@ -160,8 +173,8 @@ const additionalSkills = [];
     : coreSkills;
 
   const tabs = [
-    { id: "education", label: "Education", icon: <FaGraduationCap /> },
     { id: "experience", label: "Experience", icon: <FaBriefcase /> },
+    { id: "education", label: "Education", icon: <FaGraduationCap /> },
     { id: "skills", label: "Skills", icon: <FaCog /> },
   ];
 
@@ -258,6 +271,53 @@ const additionalSkills = [];
 
         {/* Tab Content */}
         <div className="animate-fade-in-up animation-delay-400">
+           {/* Experience Tab */}
+           {activeTab === "experience" && (
+            <div className="space-y-6">
+              {experienceData.map((item, index) => (
+                <div
+                  key={item.id}
+                  className="group relative animate-fade-in-up"
+                  style={{ animationDelay: `${index * 0.1}s` }}
+                >
+                  {/* Glowing border effect */}
+                  <div className="absolute -inset-1 bg-gradient-to-r from-green-600 via-blue-600 to-green-600 rounded-2xl blur opacity-25 group-hover:opacity-75 transition duration-1000 dark:from-green-500 dark:via-blue-500 dark:to-green-500"></div>
+
+                  {/* Card content */}
+                  <div className="relative bg-white rounded-2xl p-6 transform group-hover:scale-[1.02] transition-all duration-300 border border-gray-200 hover:bg-gray-50 hover:shadow-md dark:bg-[#1a1a1a]/80 dark:border-[#333333] dark:hover:bg-[#333333] dark:hover:shadow-gray-950/50">
+                    <div className="flex flex-col md:flex-row md:items-center gap-6">
+                      {/* Logo */}
+                      <div className="flex justify-center md:justify-start">
+                        <div className="w-20 h-20 bg-gray-100 rounded-xl flex items-center justify-center border border-gray-200 group-hover:scale-110 transition-transform duration-300 dark:bg-gray-800 dark:border-gray-700">
+                          <img
+                            src={item.logo || "/placeholder.svg"}
+                            alt={`${item.company} logo`}
+                            className="w-12 h-12 object-contain"
+                          />
+                        </div>
+                      </div>
+
+                      {/* Content */}
+                      <div className="flex-1 text-center md:text-left">
+                        <span className="text-green-600 text-sm font-semibold bg-green-600/20 px-3 py-1 rounded-full inline-block mb-2 dark:text-green-400 dark:bg-green-400/20">
+                          {item.duration}
+                        </span>
+                        <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-2 group-hover:text-green-600 transition-colors dark:text-white dark:group-hover:text-green-400">
+                          {item.title}
+                        </h3>
+                        <p className="text-cyan-600 font-medium mb-3 dark:text-cyan-300">
+                          {item.company}
+                        </p>
+                        <p className="text-gray-600 leading-relaxed text-sm dark:text-gray-300">
+                          {item.description}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
           {/* Education Tab */}
           {activeTab === "education" && (
             <div className="space-y-6">
@@ -318,53 +378,6 @@ const additionalSkills = [];
             </div>
           )}
 
-          {/* Experience Tab */}
-          {activeTab === "experience" && (
-            <div className="space-y-6">
-              {experienceData.map((item, index) => (
-                <div
-                  key={item.id}
-                  className="group relative animate-fade-in-up"
-                  style={{ animationDelay: `${index * 0.1}s` }}
-                >
-                  {/* Glowing border effect */}
-                  <div className="absolute -inset-1 bg-gradient-to-r from-green-600 via-blue-600 to-green-600 rounded-2xl blur opacity-25 group-hover:opacity-75 transition duration-1000 dark:from-green-500 dark:via-blue-500 dark:to-green-500"></div>
-
-                  {/* Card content */}
-                  <div className="relative bg-white rounded-2xl p-6 transform group-hover:scale-[1.02] transition-all duration-300 border border-gray-200 hover:bg-gray-50 hover:shadow-md dark:bg-[#1a1a1a]/80 dark:border-[#333333] dark:hover:bg-[#333333] dark:hover:shadow-gray-950/50">
-                    <div className="flex flex-col md:flex-row md:items-center gap-6">
-                      {/* Logo */}
-                      <div className="flex justify-center md:justify-start">
-                        <div className="w-20 h-20 bg-gray-100 rounded-xl flex items-center justify-center border border-gray-200 group-hover:scale-110 transition-transform duration-300 dark:bg-gray-800 dark:border-gray-700">
-                          <img
-                            src={item.logo || "/placeholder.svg"}
-                            alt={`${item.company} logo`}
-                            className="w-12 h-12 object-contain"
-                          />
-                        </div>
-                      </div>
-
-                      {/* Content */}
-                      <div className="flex-1 text-center md:text-left">
-                        <span className="text-green-600 text-sm font-semibold bg-green-600/20 px-3 py-1 rounded-full inline-block mb-2 dark:text-green-400 dark:bg-green-400/20">
-                          {item.duration}
-                        </span>
-                        <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-2 group-hover:text-green-600 transition-colors dark:text-white dark:group-hover:text-green-400">
-                          {item.title}
-                        </h3>
-                        <p className="text-cyan-600 font-medium mb-3 dark:text-cyan-300">
-                          {item.company}
-                        </p>
-                        <p className="text-gray-600 leading-relaxed text-sm dark:text-gray-300">
-                          {item.description}
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          )}
 
           {/* Skills Tab */}
           {activeTab === "skills" && (
