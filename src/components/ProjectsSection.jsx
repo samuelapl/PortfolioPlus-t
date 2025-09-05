@@ -95,10 +95,7 @@ const ProjectsSection = () => {
                 className="group relative animate-fade-in-up"
                 style={{ animationDelay: `${0.1 + index * 0.1}s` }}
               >
-                {/* Glowing border effect - now always visible */}
-                <div
-                  className={`absolute -inset-1 bg-gradient-to-r from-purple-600 via-cyan-600 to-purple-600 rounded-2xl blur opacity-75 transition duration-1000 dark:from-purple-500 dark:via-cyan-500 dark:to-purple-500`}
-                ></div>
+            
 
                 {/* Card content - Increased height with min-h-[500px] */}
                 <div
@@ -113,7 +110,7 @@ const ProjectsSection = () => {
                     />
 
                     {/* Overlay - now always visible */}
-                    <div className={`absolute inset-0 bg-gradient-to-t from-black/90 via-black/60 to-transparent transition-opacity duration-500 opacity-100`}></div>
+                   
                   </div>
 
                   {/* Tech Tags - Moved below image */}
