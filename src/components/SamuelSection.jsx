@@ -17,7 +17,8 @@ import {
   SiTypescript,
   SiNextdotjs,
   SiExpress,
-  SiGraphql
+  SiGraphql,
+   SiGo
 } from "react-icons/si";
  import MyLatestCV from "../assets/SamuelTiruneh_Resume.pdf";
 
@@ -58,6 +59,12 @@ const SamuelSection = () => {
     {
       name: "Express.js",
       icon: <SiExpress className="text-4xl text-black dark:text-gray-200" />,
+    },
+    {
+      name: "Golang",
+      icon: (
+        <SiGo className="text-4xl text-cyan-500 dark:text-cyan-400" />
+      ),
     },
     {
       name: "Flutter",

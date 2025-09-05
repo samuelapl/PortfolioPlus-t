@@ -1,73 +1,16 @@
 import { useEffect, useRef, useState } from "react";
 import { FaLink, FaGithub, FaChevronRight } from "react-icons/fa";
 import projectsData from "../assets/projectsData";
+
 const ProjectsSection = () => {
-  const [projects, setProjects] = useState(projectsData);
-  const [activeProject, setActiveProject] = useState(null);
-  const [isMobile, setIsMobile] = useState(false);
-  const [clickedProject, setClickedProject] = useState(null);
+  // The original project data is no longer needed in state as we're not modifying it based on user interaction
+  // const [projects, setProjects] = useState(projectsData);
   const projectRefs = useRef([]);
 
+  // Removed all useEffect hooks related to hover/click/mobile behavior as the content will always be visible by default.
 
-
-  useEffect(() => {
-    const checkIfMobile = () => {
-      setIsMobile(window.innerWidth <= 768);
-    };
-    checkIfMobile();
-    window.addEventListener("resize", checkIfMobile);
-    return () => window.removeEventListener("resize", checkIfMobile);
-  }, []);
-
-  useEffect(() => {
-    if (!isMobile) return;
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          const index = projectRefs.current.indexOf(entry.target);
-          if (index === -1) return;
-
-          if (entry.isIntersecting) {
-            setActiveProject(index);
-          } else if (activeProject === index && clickedProject !== index) {
-            setActiveProject(null);
-          }
-        });
-      },
-      {
-        threshold: 0.5,
-        rootMargin: "0px 0px -30% 0px",
-      }
-    );
-
-    projectRefs.current.forEach((ref) => {
-      if (ref) observer.observe(ref);
-    });
-
-    return () => {
-      projectRefs.current.forEach((ref) => {
-        if (ref) observer.unobserve(ref);
-      });
-    };
-  }, [isMobile, activeProject, clickedProject]);
-
-  const handleProjectClick = (index) => {
-    if (!isMobile) return;
-
-    if (clickedProject === index) {
-      setClickedProject(null);
-      setActiveProject(null);
-    } else {
-      setClickedProject(index);
-      setActiveProject(index);
-    }
-  };
-
-  const shouldShowHover = (index) => {
-    if (!isMobile) return false;
-    return activeProject === index || clickedProject === index;
-  };
+  // The shouldShowHover function is no longer needed as all content is always shown.
+  // The handleProjectClick function is also no longer needed.
 
   return (
     <section
@@ -143,124 +86,107 @@ const ProjectsSection = () => {
           />
         </div>
 
-   <div className="animate-fade-in-up animation-delay-400">
-  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-    {projects.map((project, index) => (
-      <div
-        key={project._id}
-        ref={(el) => (projectRefs.current[index] = el)}
-        className="group relative animate-fade-in-up"
-        style={{ animationDelay: `${0.1 + index * 0.1}s` }}
-        onClick={() => handleProjectClick(index)}
-      >
-        {/* Glowing border effect */}
-        <div
-          className={`absolute -inset-1 bg-gradient-to-r from-purple-600 via-cyan-600 to-purple-600 rounded-2xl blur opacity-25 group-hover:opacity-75 transition duration-1000 dark:from-purple-500 dark:via-cyan-500 dark:to-purple-500 ${
-            shouldShowHover(index) ? "opacity-75" : ""
-          }`}
-        ></div>
+        <div className="animate-fade-in-up animation-delay-400">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {projectsData.map((project, index) => (
+              <div
+                key={project._id}
+                ref={(el) => (projectRefs.current[index] = el)}
+                className="group relative animate-fade-in-up"
+                style={{ animationDelay: `${0.1 + index * 0.1}s` }}
+              >
+                {/* Glowing border effect - now always visible */}
+                <div
+                  className={`absolute -inset-1 bg-gradient-to-r from-purple-600 via-cyan-600 to-purple-600 rounded-2xl blur opacity-75 transition duration-1000 dark:from-purple-500 dark:via-cyan-500 dark:to-purple-500`}
+                ></div>
 
-        {/* Card content - Increased height with min-h-[500px] */}
-        <div
-          className={`relative bg-white rounded-2xl overflow-hidden transform transition-all duration-500 border border-gray-200 hover:bg-gray-50 hover:shadow-md dark:bg-[#1a1a1a]/80 dark:border-[#333333] dark:hover:bg-[#333333] dark:hover:shadow-gray-950/50 min-h-[500px] ${
-            !isMobile ? "group-hover:scale-[1.02]" : ""
-          } ${shouldShowHover(index) ? "scale-[1.02]" : ""}`}
-        >
-          {/* Project Image */}
-          <div className="relative h-60 overflow-hidden">
-            <img
-              src={project.imageUrl || "/placeholder.svg?height=240&width=400"}
-              alt={project.title}
-              className={`w-full h-full object-cover transition-transform duration-700 ${
-                !isMobile ? "group-hover:scale-110" : ""
-              } ${shouldShowHover(index) ? "scale-110" : ""}`}
-            />
-
-            {/* Overlay */}
-            <div
-              className={`absolute inset-0 bg-gradient-to-t from-black/90 via-black/60 to-transparent transition-opacity duration-500 ${
-                !isMobile ? "opacity-0 group-hover:opacity-100" : ""
-              } ${
-                shouldShowHover(index) ? "opacity-100" : "opacity-0"
-              }`}
-            ></div>
-          </div>
-
-          {/* Tech Tags - Moved below image */}
-          <div className="px-6 pt-4 pb-2 flex flex-wrap gap-2">
-            {project.technologies &&
-              project.technologies.slice(0, 8).map((tech, i) => (
-                <span
-                  key={i}
-                  className="px-2 py-1 text-xs font-medium bg-black/50 text-white rounded-full backdrop-blur-sm"
+                {/* Card content - Increased height with min-h-[500px] */}
+                <div
+                  className={`relative bg-white rounded-2xl overflow-hidden transform transition-all duration-500 border border-gray-200 hover:bg-gray-50 hover:shadow-md dark:bg-[#1a1a1a]/80 dark:border-[#333333] dark:hover:bg-[#333333] dark:hover:shadow-gray-950/50 min-h-[500px] scale-[1.02]`}
                 >
-                  {tech}
-                </span>
-              ))}
+                  {/* Project Image */}
+                  <div className="relative h-60 overflow-hidden">
+                    <img
+                      src={project.imageUrl || "/placeholder.svg?height=240&width=400"}
+                      alt={project.title}
+                      className={`w-full h-full object-cover transition-transform duration-700 scale-110`}
+                    />
+
+                    {/* Overlay - now always visible */}
+                    <div className={`absolute inset-0 bg-gradient-to-t from-black/90 via-black/60 to-transparent transition-opacity duration-500 opacity-100`}></div>
+                  </div>
+
+                  {/* Tech Tags - Moved below image */}
+                  <div className="px-6 pt-4 pb-2 flex flex-wrap gap-2">
+                    {project.technologies &&
+                      project.technologies.slice(0, 8).map((tech, i) => (
+                        <span
+                          key={i}
+                          className="px-2 py-1 text-xs font-medium bg-black/50 text-white rounded-full backdrop-blur-sm"
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                  </div>
+
+                  {/* Project Info */}
+                  <div className="p-6 pt-2">
+                    <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-orange-400 transition-colors dark:text-white dark:group-hover:text-yellow-400">
+                      {project.title}
+                    </h3>
+
+                    {/* Description - line-clamp class removed to always show full text */}
+                    <p
+                      className={`text-gray-600 text-sm mb-4 transition-all duration-500 dark:text-gray-300`}
+                    >
+                      {project.description}
+                    </p>
+
+                    {/* Links */}
+                    <div className="flex items-center justify-between mt-4">
+                      <div className="flex gap-3">
+                        {project.url && (
+                          <a
+                            href={project.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-gradient-to-r from-orange-400 to-amber-500 text-white hover:from-orange-500 hover:to-amber-600 transition-all duration-300 transform hover:scale-110 shadow-lg dark:from-yellow-500 dark:to-orange-500 dark:hover:from-yellow-600 dark:hover:to-orange-600"
+                          >
+                            <FaLink className="text-lg" />
+                          </a>
+                        )}
+                        {project.github && (
+                          <a
+                            href={project.github}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-gradient-to-r from-purple-600 to-cyan-600 text-white hover:from-purple-700 hover:to-cyan-700 transition-all duration-300 transform hover:scale-110 shadow-lg dark:from-purple-500 dark:to-cyan-500 dark:hover:from-purple-600 dark:hover:to-cyan-600"
+                          >
+                            <FaGithub className="text-lg" />
+                          </a>
+                        )}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
 
-          {/* Project Info */}
-          <div className="p-6 pt-2"> {/* Reduced top padding here */}
-            <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-orange-400 transition-colors dark:text-white dark:group-hover:text-yellow-400">
-              {project.title}
-            </h3>
-
-            <p
-              className={`text-gray-600 text-sm mb-4 line-clamp-2 transition-all duration-500 dark:text-gray-300 ${
-                !isMobile ? "group-hover:line-clamp-none" : ""
-              } ${shouldShowHover(index) ? "line-clamp-none" : ""}`}
+          {/* GitHub link remains the same */}
+          <div className="mt-16 text-center animate-fade-in-up animation-delay-600">
+            <a
+              href="https://github.com/Samuel-Tiruneh"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group inline-flex items-center px-8 py-4 bg-gradient-to-r from-purple-600 to-cyan-600 hover:from-purple-700 hover:to-cyan-700 text-white font-semibold rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl dark:from-purple-500 dark:to-cyan-500 dark:hover:from-purple-600 dark:hover:to-cyan-600"
             >
-              {project.description}
-            </p>
-
-            {/* Links */}
-            <div className="flex items-center justify-between mt-4">
-              <div className="flex gap-3">
-                {project.url && (
-                  <a
-                    href={project.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-gradient-to-r from-orange-400 to-amber-500 text-white hover:from-orange-500 hover:to-amber-600 transition-all duration-300 transform hover:scale-110 shadow-lg dark:from-yellow-500 dark:to-orange-500 dark:hover:from-yellow-600 dark:hover:to-orange-600"
-                    onClick={(e) => e.stopPropagation()}
-                  >
-                    <FaLink className="text-lg" />
-                  </a>
-                )}
-                {project.github && (
-                  <a
-                    href={project.github}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-gradient-to-r from-purple-600 to-cyan-600 text-white hover:from-purple-700 hover:to-cyan-700 transition-all duration-300 transform hover:scale-110 shadow-lg dark:from-purple-500 dark:to-cyan-500 dark:hover:from-purple-600 dark:hover:to-cyan-600"
-                    onClick={(e) => e.stopPropagation()}
-                  >
-                    <FaGithub className="text-lg" />
-                  </a>
-                )}
-              </div>
-            </div>
+              <FaGithub className="mr-2 text-xl group-hover:rotate-12 transition-transform" />
+              <span>More Projects on GitHub</span>
+              <FaChevronRight className="ml-2 group-hover:translate-x-1 transition-transform" />
+            </a>
           </div>
         </div>
-      </div>
-    ))}
-  </div>
-
-  {/* GitHub link remains the same */}
-  <div className="mt-16 text-center animate-fade-in-up animation-delay-600">
-    <a
-      href="https://github.com/Samuel-Tiruneh"
-      target="_blank"
-      rel="noopener noreferrer"
-      className="group inline-flex items-center px-8 py-4 bg-gradient-to-r from-purple-600 to-cyan-600 hover:from-purple-700 hover:to-cyan-700 text-white font-semibold rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl dark:from-purple-500 dark:to-cyan-500 dark:hover:from-purple-600 dark:hover:to-cyan-600"
-    >
-      <FaGithub className="mr-2 text-xl group-hover:rotate-12 transition-transform" />
-      <span>More Projects on GitHub</span>
-      <FaChevronRight className="ml-2 group-hover:translate-x-1 transition-transform" />
-    </a>
-  </div>
-</div>
-        
       </div>
 
       <style jsx>{`
