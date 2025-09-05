@@ -31,7 +31,7 @@ import courseraLogo from "../assets/courseraLogo.png";
 import alyahLogo from "../assets/alyahLogo.jpeg";
 import prodigyLogo from "../assets/prodgyLogo.jpeg";
 import tannLogo from "../assets/tann.avif"
-import codeAlphaLogo from "../assets/codeAlphaLogo.png"
+import codeAlphaLogo from "../assets/codeAlphaLogo.jpeg"
 import SaiketLogo from "../assets/saiket_systems_logo.jpeg"
 const ResumeSection = () => {
   const [activeTab, setActiveTab] = useState("experience");
