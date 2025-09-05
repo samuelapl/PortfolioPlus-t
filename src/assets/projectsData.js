@@ -1,10 +1,10 @@
 // src/data/projectsData.js
 import nileVerseImg from './nile-verse.png';
 import rohaPicksImg from './roha-picks.png';
-import gurshaImg from './gursha.png';
+import gurshaImg from './gursha.jpg';
 import kimImg from './kim.png';
 import BruhAiImage from './bruhai.png';
-import PlaneWiseImage from './planwise.jpeg';
+import unifiedImg from './unified.jpg';
 const projects = [
   {
     _id: "1",
@@ -57,16 +57,15 @@ const projects = [
     github: "https://github.com/Samuel-Tiruneh",
   },
 
-  {
-    _id: "6",
-    title: "PlanWise",
-    description:
-      "This full-stack productivity platform helps to manage personal notes effortlessly. Users can create, update, delete, and pin important notes using a clean and responsive interface. The backend delivers fast and reliable data processing, while the frontend offers an intuitive way to organize and prioritize notes effectively.",
-    imageUrl: PlaneWiseImage,
-    technologies: ["React", "Tailwind CSS","RESTful API" ,"MongoDB", "Node.js", "Express.js"],
-    url: "https://noteappv1-1.onrender.com",
-    github: "https://github.com/Samuel-Tiruneh",
-  },
+{
+  _id: "6",
+  title: "Unified",
+  description: "All-in-one mobile app provides a centralized platform for various productivity features. Built with Flutter, it integrates notes, to-do lists, contact management, and a real-time chat app into a single, seamless experience. The clean and responsive interface allows users to stay organized and connected, making it a powerful tool for managing daily tasks and communications.",
+  imageUrl: unifiedImg ,
+ technologies: ["Flutter", "postgreSQL"],
+  url: "https://unified-d0a7c.web.app/",
+  github: "https://github.com/samuelapl"
+}
 ];
 
 export default projects;
