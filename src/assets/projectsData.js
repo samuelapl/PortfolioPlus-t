@@ -2,7 +2,7 @@
 import nileVerseImg from './nile-verse.png';
 import rohaPicksImg from './roha-picks.png';
 import gurshaImg from './gursha.jpg';
-import kimImg from './kim.png';
+import BiT from './BiT.png';
 import BruhAiImage from './bruhai.png';
 import unifiedImg from './unified.jpg';
 const projects = [
@@ -48,12 +48,12 @@ const projects = [
   },
   {
     _id: "5",
-    title: "KimTech-Landing Page",
-    description:
-      "The official website for Kim Tech, an Ethiopian tech startup, is built with React, Tailwind CSS, and Express.js. It showcases a modern, fully responsive design that works well on all devices. The site highlights the company’s services, mission, and team, providing visitors with a smooth and engaging browsing experience.",
-    imageUrl: kimImg,
-    technologies: ["React.js", "Tailwind CSS", "Express.js"],
-    url: "https://kimtech.onrender.com/",
+    title: "BiT Faculty of Computing Final Year Project Selection and Tracking System",
+    description:"A web-based platform built for Bahir Dar University Faculty of Computing to simplify how final year student projects are selected, managed, and tracked."
+,
+    imageUrl: BiT,
+    technologies: ["React.js", "Tailwind CSS", "Express.js", "PostgreSQL"],
+    url: "https://bit-pms.onrender.com/",
     github: "https://github.com/Samuel-Tiruneh",
   },
 
