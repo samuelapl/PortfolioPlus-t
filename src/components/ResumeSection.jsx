@@ -51,7 +51,7 @@ const ResumeSection = () => {
   const educationData = [
     {
       id: 1,
-      date: "2022 - Present",
+      date: "2022 - 2026",
       title: "Bachelor's in Software Engineering",
       institution: "Bahir Dar University, Ethiopia",
       logo: bduLogo,
@@ -84,7 +84,7 @@ const ResumeSection = () => {
   const experienceData = [
     {
       id: 1,
-      duration: "Currently",
+      duration: "6 months",
       company: "The Tann Mann Foundation",
       logo: tannLogo,
       title: "Flutter Developer",

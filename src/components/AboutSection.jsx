@@ -1,19 +1,17 @@
 "use client";
 import { FaCode, FaGraduationCap } from "react-icons/fa";
 
-import ProfilePic from "../assets/pp.png";
-
 const AboutSection = () => {
   const stats = [
     {
-      number: "15",
+      number: "10",
       label: "Projects",
       icon: <FaCode className="text-xl" />,
       color:
         "from-purple-600 to-cyan-600 dark:from-purple-500 dark:to-cyan-500",
     },
     {
-      number: "3",
+      number: "4",
       label: "Years Exp",
       icon: <FaGraduationCap className="text-xl" />,
       color: "from-green-600 to-teal-600 dark:from-green-500 dark:to-teal-500",
@@ -25,7 +23,7 @@ const AboutSection = () => {
       id="about"
       className="relative py-20 overflow-hidden bg-white dark:bg-gradient-to-br dark:from-[#1a1a1a] dark:via-[#333333] dark:to-[#1a1a1a] transition-colors duration-500"
     >
-      {/* Background elements remain the same */}
+      {/* Background elements */}
       <div className="absolute inset-0 bg-white dark:bg-gradient-to-br dark:from-[#1a1a1a] dark:via-[#333333] dark:to-[#1a1a1a] transition-colors duration-500">
         {/* Floating Particles */}
         <div className="absolute inset-0">
@@ -94,86 +92,53 @@ const AboutSection = () => {
           />
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-          {/* Image Section */}
-          <div className="flex justify-center animate-fade-in-up animation-delay-200">
-            <div className="relative group">
-              {/* Glowing border effect */}
-              <div className="absolute -inset-1 bg-gradient-to-r from-purple-600 via-cyan-600 to-purple-600 rounded-2xl blur opacity-75 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-tilt dark:from-purple-500 dark:via-cyan-500 dark:to-purple-500"></div>
-
-              {/* Image container */}
-              <div className="relative bg-white rounded-2xl p-2 border border-gray-200 dark:bg-[#1a1a1a]/80 dark:border-[#333333]">
-                <img
-                  src={ProfilePic}
-                  alt="Samuel Tiruneh"
-                  className="w-full max-w-[400px] h-[400px] object-cover rounded-xl shadow-2xl transform group-hover:scale-105 transition-transform duration-300"
-                />
-
-                {/* Floating badge */}
-                <div className="absolute -bottom-4 -right-4 bg-gradient-to-r from-orange-400 to-amber-500 text-white px-4 py-2 rounded-full font-semibold shadow-lg animate-bounce-slow dark:from-yellow-500 dark:to-orange-500">
-                  <FaCode className="inline mr-2" />
-                  Full-Stack Dev
-                </div>
-              </div>
-            </div>
+        {/* Content Section - Full Width */}
+        <div className="max-w-4xl mx-auto text-gray-900 animate-fade-in-up animation-delay-200 dark:text-white">
+          <div className="mb-8 text-center">
+            <h3 className="text-2xl md:text-4xl font-bold mb-4">
+              <span className="bg-gradient-to-r from-cyan-600 to-purple-600 bg-clip-text text-transparent dark:from-cyan-400 dark:to-purple-400">
+                Full-Stack Developer.
+              </span>{" "}
+              <span className="bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent dark:from-purple-400 dark:to-pink-400">
+                Software Engineer.
+              </span>
+            </h3>
           </div>
 
-          {/* Content Section */}
-          <div className="text-gray-900 animate-fade-in-up animation-delay-400 dark:text-white">
-            <div className="mb-6">
-              <h3 className="text-1xl md:text-3xl font-bold mb-2">
-                <span className="bg-gradient-to-r from-cyan-600 to-purple-600 bg-clip-text text-transparent dark:from-cyan-400 dark:to-purple-400">
-                  Developer.
-                </span>{" "}
-                <span className="bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent dark:from-purple-400 dark:to-pink-400">
-                  Simplifier.
-                </span>{" "}
-                <span className="bg-gradient-to-r from-pink-600 to-yellow-600 bg-clip-text text-transparent dark:from-pink-400 dark:to-yellow-400">
-                  Problem-solver.
-                </span>
-              </h3>
-            </div>
+          <div className="text-sm md:text-lg leading-relaxed mb-8 text-gray-600 dark:text-gray-300">
+            <p className="mb-4">
+              Full-Stack Developer and Software Engineering graduate with experience building scalable web and mobile applications. Proficient in JavaScript/TypeScript ecosystems (React, Next.js, Node.js, Nest.js) and mobile development using Flutter.
+            </p>
+            <p className="mb-4">
+              Proven track record of adapting quickly to diverse environments, spanning on-site internships and collaborative remote teams.
+            </p>
+            <p className="mb-6">
+              Focused on writing clean, maintainable code that solves complex technical challenges and delivers business value.
+            </p>
 
-            <div className="text-sm md:text-lg leading-relaxed mb-8 text-gray-600 dark:text-gray-300">
-              <p className="mb-4">
-                I'm a full-stack developer with over three years of experience
-                in developing websites and mobile apps.
-              </p>
-              <p className="mb-4">
-                Currently pursuing Software Engineering at Bahir Dar University,  With a strong passion for creating seamless digital
-                experiences, I focus on both frontend and backend technologies.
-              </p>
-              <p className="mb-6">
-                I'm always excited to learn new technologies and improve my
-                skills through hands-on experience with diverse projects. My
-                goal is to build applications that not only function perfectly
-                but also provide exceptional user experiences.
-              </p>
-
-              {/* Compact Achievements Section */}
-              <div className="flex gap-4 mb-6">
-                {stats.map((stat, index) => (
-                  <div key={stat.label} className="group relative flex-1">
-                    {/* Card content */}
-                    <div className="relative bg-white rounded-xl p-4 text-center transform transition-all duration-300 group-hover:-translate-y-1 border border-gray-200 hover:bg-gray-50 hover:shadow-md dark:bg-[#1a1a1a]/80 dark:border-[#333333] dark:hover:bg-[#333333] dark:hover:shadow-gray-950/50">
-                      <div
-                        className={`inline-flex items-center justify-center w-10 h-10 bg-gradient-to-r ${stat.color} rounded-full mb-2 mx-auto text-white`}
-                      >
-                        {stat.icon}
-                      </div>
-                      <div className="text-2xl font-bold text-gray-900 mb-1 dark:text-white">
-                        {stat.number}
-                        <span className="text-orange-400 dark:text-yellow-400">
-                          +
-                        </span>
-                      </div>
-                      <p className="text-gray-600 text-xs font-medium dark:text-gray-300">
-                        {stat.label}
-                      </p>
+            {/* Compact Achievements Section */}
+            <div className="flex gap-4 mb-6 max-w-md mx-auto">
+              {stats.map((stat, index) => (
+                <div key={stat.label} className="group relative flex-1">
+                  {/* Card content */}
+                  <div className="relative bg-white rounded-xl p-4 text-center transform transition-all duration-300 group-hover:-translate-y-1 border border-gray-200 hover:bg-gray-50 hover:shadow-md dark:bg-[#1a1a1a]/80 dark:border-[#333333] dark:hover:bg-[#333333] dark:hover:shadow-gray-950/50">
+                    <div
+                      className={`inline-flex items-center justify-center w-10 h-10 bg-gradient-to-r ${stat.color} rounded-full mb-2 mx-auto text-white`}
+                    >
+                      {stat.icon}
                     </div>
+                    <div className="text-2xl font-bold text-gray-900 mb-1 dark:text-white">
+                      {stat.number}
+                      <span className="text-orange-400 dark:text-yellow-400">
+                        +
+                      </span>
+                    </div>
+                    <p className="text-gray-600 text-xs font-medium dark:text-gray-300">
+                      {stat.label}
+                    </p>
                   </div>
-                ))}
-              </div>
+                </div>
+              ))}
             </div>
           </div>
         </div>
